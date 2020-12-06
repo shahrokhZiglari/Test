@@ -1,0 +1,29 @@
+﻿@page "/"
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<div>
+    <h1>لیست کارمندان</h1>
+    <p>نام: @karmand.name</p>
+    <p>نام: @karmand.lastOnline.ToString("yyyyy/MM/dd")</p>
+
+
+
+
+</div>
+
+
+
+@code{ 
+    Karmand karmand = new Karmand
+    {
+        name       = "شاهرخ",
+        lastOnline = new DateTime(2020, 01, 01),
+    };
+
+
+}
