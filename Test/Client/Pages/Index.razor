@@ -9,25 +9,37 @@ Welcome to your new app.
 <div>
     <h1>لیست کارمندان</h1>
 
-    @foreach (var item in listKarmand)
+    @if (listKarmand != null)
     {
-        <p>@item.name</p>
-        <p>@item.lastOnline.ToString()</p>
+        @foreach (var item in listKarmand)
+        {
+            <p>@item.name</p>
+            <p>@item.lastOnline.ToString()</p>
 
 
+        }
+
+        <hr />
+        @for (int i = 0; i < listKarmand.Count; i++)
+        {
+            <div style="background-color: @(i % 2 == 0 ? "aqua":"brown" )">
+                <p>
+                    @(i + 1)
+                    @listKarmand[i].name
+                    @listKarmand[i].lastOnline.ToString()
+                </p>
+            </div>
+
+
+        }
+    }
+    else
+    {
+        <p>بارگذاری</p>
     }
 
-    <hr />
-    @for (int i = 0; i < listKarmand.Count; i++)
-    {
-        <div style="background-color: @(i % 2 == 0 ? "aqua":"brown" )">
-            <p>@(i + 1)</p>
-            <p>@listKarmand[i].name</p>
-            <p>@listKarmand[i].lastOnline.ToString()</p>
-        </div>
 
 
-    }
 
 
 
@@ -42,25 +54,18 @@ Welcome to your new app.
     List<Karmand> listKarmand;
 
 
-    protected override void OnInitialized()
+    protected async override Task OnInitializedAsync()
     {
-        listKarmand = new List<Karmand>()
+        await Task.Delay(2000);
 
-{
+        listKarmand = new List<Karmand>()
+        { 
             new Karmand{ name = "ali",  lastOnline = new DateTime(2019,1,1)},
             new Karmand{ name = "reza", lastOnline = new DateTime(2018,1,1)},
             new Karmand{ name = "sara", lastOnline = new DateTime(2020,1,1)},
         };
 
     }
-
-
-    Karmand karmand = new Karmand
-    {
-        name = "شاهرخ",
-        lastOnline = new DateTime(2020, 01, 01),
-
-    };
 
 
 }
