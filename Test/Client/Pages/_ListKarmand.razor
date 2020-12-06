@@ -1,0 +1,29 @@
+﻿@if (listKarmand != null)
+{
+    @foreach (var item in listKarmand)
+    {
+        <p>@((MarkupString)item.name)</p>
+        <p>@item.lastOnline.ToString()</p>
+    }
+}
+else
+{
+    <p>بارگذاری...</p>
+    <img src="Wedges-33.3s-200px.gif" alt="Alternate Text" width="200" height="200" />
+}
+
+@code {
+    List<Karmand> listKarmand;
+
+    protected async override Task OnInitializedAsync()
+    {
+        await Task.Delay(6000);
+
+        listKarmand = new List<Karmand>()
+        {
+            new Karmand{ name = "<b>ali</b>",  lastOnline = new DateTime(2019,1,1)},
+            new Karmand{ name = "reza", lastOnline = new DateTime(2018,1,1)},
+            new Karmand{ name = "sara", lastOnline = new DateTime(2020,1,1)},
+        };
+    }
+}

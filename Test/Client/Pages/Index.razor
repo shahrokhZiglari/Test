@@ -9,40 +9,7 @@ Welcome to your new app.
 <div>
     <h1>لیست کارمندان</h1>
 
-    @if (listKarmand != null)
-    {
-        @foreach (var item in listKarmand)
-        {
-            <p>@item.name</p>
-            <p>@item.lastOnline.ToString()</p>
-
-
-        }
-
-        <hr />
-        @for (int i = 0; i < listKarmand.Count; i++)
-        {
-            <div style="background-color: @(i % 2 == 0 ? "aqua":"brown" )">
-                <p>
-                    @(i + 1)
-                    @listKarmand[i].name
-                    @listKarmand[i].lastOnline.ToString()
-                </p>
-            </div>
-
-
-        }
-    }
-    else
-    {
-        <p>بارگذاری</p>
-    }
-
-
-
-
-
-
+    <_ListKarmand />
 
 </div>
 
@@ -50,22 +17,7 @@ Welcome to your new app.
 
 @code{
 
-
-    List<Karmand> listKarmand;
-
-
-    protected async override Task OnInitializedAsync()
-    {
-        await Task.Delay(2000);
-
-        listKarmand = new List<Karmand>()
-        { 
-            new Karmand{ name = "ali",  lastOnline = new DateTime(2019,1,1)},
-            new Karmand{ name = "reza", lastOnline = new DateTime(2018,1,1)},
-            new Karmand{ name = "sara", lastOnline = new DateTime(2020,1,1)},
-        };
-
-    }
+   
 
 
 }
